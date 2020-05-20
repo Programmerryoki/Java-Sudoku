@@ -3,7 +3,6 @@ package model;
 public class Sudoku {
 	public Sudoku()
 	{
-		
 	}
 	
 	public int[][] getGrid() {
