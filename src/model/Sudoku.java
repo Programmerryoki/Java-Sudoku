@@ -13,5 +13,14 @@ public class Sudoku {
 		this.grid = grid;
 	}
 
+	public int[][] getOriginal() {
+		return original;
+	}
+
+	public void setOriginal(int[][] original) {
+		this.original = original;
+	}
+
 	private int[][] grid;
+	private int[][] original;
 }
