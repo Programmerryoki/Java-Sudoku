@@ -1,6 +1,16 @@
 package backend;
 
+/**
+ * Class that checks if the sudoku is solved or not
+ * @author Programmerryoki
+ *
+ */
 public class Answer {
+	/**
+	 * Method that Checks if the given 9x9 sudoku grid is solved correctly
+	 * @param grid The grid to check
+	 * @return True if the grid is solved, false otherwise
+	 */
 	public static boolean solved(int[][] grid)
 	{
 		if (vertical(grid) && horizontal(grid) && gridWay(grid))

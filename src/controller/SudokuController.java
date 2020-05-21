@@ -15,6 +15,7 @@ public class SudokuController implements ActionListener{
 		this.model = model;
 		this.master = master;
 		this.setView(new SudokuView(this));
+		view.fixGridNumbers(model.getOriginal());
 	}
 	
 	@Override

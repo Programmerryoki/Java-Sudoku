@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -67,7 +68,10 @@ public class SudokuView extends JPanel{
 		{
 			JRadioButton radioBtn = new JRadioButton("" + i);
 			if (i == 0)
+			{
 				radioBtn.setText("Empty");
+				radioBtn.setSelected(true);
+			}
 			radioBtn.setMnemonic(KeyEvent.VK_0 + i);
 			noBtnGroup.add(radioBtn);
 			radios.add(radioBtn);
@@ -119,6 +123,24 @@ public class SudokuView extends JPanel{
 			{
 				if (grid[i][j] != 0)
 					grids[i][j].setText("" + grid[i][j]);
+				else
+					grids[i][j].setText("");
+			}
+		}
+	}
+	
+	public void fixGridNumbers(int[][] grid)
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				if (grid[i][j] != 0)
+				{
+					grids[i][j].setEnabled(false);
+					grids[i][j].setText("" + grid[i][j]);
+					grids[i][j].setFont(new Font(grids[i][j].getFont().getFontName(), Font.PLAIN, 20));
+				}
 				else
 					grids[i][j].setText("");
 			}

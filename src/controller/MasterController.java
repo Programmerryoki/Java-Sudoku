@@ -6,12 +6,24 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.Sudoku;
+import problems.SudokuIO;
 import view.MasterView;
 
+/**
+ * Master controller that controls almost everything
+ * @author Programmerryoki
+ *
+ */
 public class MasterController {
+	/**
+	 * Ctor that creates master controller and sets the view to sudoku
+	 */
 	public MasterController()
 	{
-		sudoku = new SudokuController(new Sudoku(), this);
+		Sudoku example = new Sudoku();
+		example.setOriginal(SudokuIO.readFile("question 1"));
+		sudoku = new SudokuController(example, this);
+//		sudoku = new SudokuController(new Sudoku(), this);
 		mainView = new MasterView(sudoku.getView());
 		mainView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainView.setSize(SIZE, SIZE);
@@ -21,6 +33,9 @@ public class MasterController {
 		stack.push(sudoku.getView());
 	}
 	
+	/**
+	 * Change the view back
+	 */
 	public void back()
 	{
 		stack.pop();
@@ -29,6 +44,9 @@ public class MasterController {
 		updateMainView();
 	}
 	
+	/**
+	 * Updates the view by re changing size
+	 */
 	public void updateMainView()
 	{
 		mainView.setSize(SIZE-1, SIZE-1);
