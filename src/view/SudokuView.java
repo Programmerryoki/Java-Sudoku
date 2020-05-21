@@ -29,8 +29,10 @@ public class SudokuView extends JPanel{
 	{
 		setLayout(new BorderLayout());
 		
+		//************************
+		// Created the Sudoku grid
+		//************************
 		JPanel sudoGrids = new JPanel();
-//		sudoGrids.setPreferredSize(new Dimension(100,100));
 		sudoGrids.setLayout(new GridLayout(9,9,0,0));
 		sudoGrids.setBorder(BorderFactory.createTitledBorder("Sudoku"));
 		
@@ -51,13 +53,13 @@ public class SudokuView extends JPanel{
 				if (j == 8)
 					b[3] = 0;
 				if (i == 3 || i == 6)
-					b[0] = 2;
+					b[0] = 3;
 				if (j == 3 || j == 6)
-					b[1] = 2;
+					b[1] = 3;
 				if (i == 2 || i == 5)
-					b[2] = 2;
+					b[2] = 3;
 				if (j == 2 || j == 5)
-					b[3] = 2;
+					b[3] = 3;
 				grid.setBorder(BorderFactory.createMatteBorder(b[0], b[1], b[2], b[3], Color.black));
 				grid.setActionCommand("Grid"+i+j);
 				grid.addActionListener(controller);
@@ -69,6 +71,9 @@ public class SudokuView extends JPanel{
 		
 		add(sudoGrids, BorderLayout.CENTER);
 		
+		//*********************
+		// Radio Button Created
+		//*********************
 		noBtn = new JRadioButton[10];
 		JPanel radios = new JPanel();
 		radios.setLayout(new GridLayout(10,1));
@@ -81,19 +86,19 @@ public class SudokuView extends JPanel{
 				radioBtn.setText("Empty");
 				radioBtn.setSelected(true);
 			}
+			radioBtn.addActionListener(controller);
 			radioBtn.setMnemonic(KeyEvent.VK_0 + i);
+			radioBtn.setActionCommand("Radio " + i);
 			noBtnGroup.add(radioBtn);
 			radios.add(radioBtn);
 			noBtn[i] = radioBtn;
 		}
 		add(radios, BorderLayout.EAST);
 		
+		//****************
+		// Button to Check
+		//****************
 		JPanel buttonsP = new JPanel();
-		JButton saveBtn = new JButton();
-		saveBtn.setText("Save");
-		saveBtn.setActionCommand("Save");
-		saveBtn.addActionListener(controller);
-		buttonsP.add(saveBtn);
 		
 		JButton checkBtn = new JButton();
 		checkBtn.setText("Check");
@@ -208,6 +213,37 @@ public class SudokuView extends JPanel{
 			if (noBtn[i].isSelected())
 				return i;
 		return 0;
+	}
+	
+	/**
+	 * Change the color of cell which has the given value
+	 * @param color The color of the cell
+	 * @param val The value to check
+	 */
+	public void changeColor(Color color, int val)
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				if (grids[i][j].getText().equals(""+val))
+					grids[i][j].setBackground(color);
+			}
+		}
+	}
+	
+	/**
+	 * Resets the color of cell to original
+	 */
+	public void resetColor()
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				grids[i][j].setBackground(Color.white);
+			}
+		}
 	}
 	
 	private JButton[][] grids;
