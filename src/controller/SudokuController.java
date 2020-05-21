@@ -9,7 +9,17 @@ import backend.Answer;
 import model.Sudoku;
 import view.SudokuView;
 
+/**
+ * Controller for the Sudoku view
+ * @author Programmerryoki
+ *
+ */
 public class SudokuController implements ActionListener{
+	/**
+	 * Creates a new controller
+	 * @param model The sudoku to be shown
+	 * @param master The master controller
+	 */
 	public SudokuController(Sudoku model, MasterController master)
 	{
 		this.model = model;
@@ -19,6 +29,12 @@ public class SudokuController implements ActionListener{
 	}
 	
 	@Override
+	/**
+	 * If the action starts with grid, changes the grid at that position to 
+	 * selected number
+	 * 
+	 * If the action is Check, it will check if the grid is solved or not
+	 */
 	public void actionPerformed(ActionEvent e)
 	{
 		String action = e.getActionCommand();
@@ -41,10 +57,18 @@ public class SudokuController implements ActionListener{
 		}
 	}
 	
+	/**
+	 * Gets the view
+	 * @return The view
+	 */
 	public SudokuView getView() {
 		return view;
 	}
 
+	/**
+	 * Sets the view
+	 * @param view The view to set
+	 */
 	public void setView(SudokuView view) {
 		this.view = view;
 	}

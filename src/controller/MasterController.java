@@ -53,6 +53,10 @@ public class MasterController {
 		mainView.setSize(SIZE, SIZE);
 	}
 	
+	/**
+	 * Sets the current view to given sudoku
+	 * @param sudo The sudoku to be shown
+	 */
 	public void setCurrentView(Sudoku sudo)
 	{
 		sudoku = new SudokuController(sudo, this);
@@ -60,14 +64,6 @@ public class MasterController {
 		updateMainView();
 		stack.push(sudoku.getView());
 	}
-	
-//	public void setNewCurrentView(Sudoku sudo)
-//	{
-//		sudoku = new SudokuController(sudo, this);
-//		mainView.setCurrentView(sudoku.getView());
-//		updateMainView();
-//		stack.push(sudoku.getView());
-//	}
 	
 	private MasterView mainView;
 	private SudokuController sudoku;

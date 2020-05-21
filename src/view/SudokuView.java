@@ -15,7 +15,16 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 
+/**
+ * The class that has the GUI of Sudoku
+ * @author Programmerryoki
+ *
+ */
 public class SudokuView extends JPanel{
+	/**
+	 * Ctor that creates GUI of the Sudoku
+	 * @param controller The controller which listen to action of sudokuview
+	 */
 	public SudokuView(ActionListener controller)
 	{
 		setLayout(new BorderLayout());
@@ -95,6 +104,10 @@ public class SudokuView extends JPanel{
 		add(buttonsP, BorderLayout.SOUTH);
 	}
 	
+	/**
+	 * Gets the number inputted onto the sudoku
+	 * @return The grid which has all the input
+	 */
 	public int[][] getGridNumbers()
 	{
 		int[][] ans = new int[9][9];
@@ -115,6 +128,10 @@ public class SudokuView extends JPanel{
 		return ans;
 	}
 	
+	/**
+	 * Sets the grid of the sudoku to be the given grid
+	 * @param grid The grid to set number
+	 */
 	public void setGridNumbers(int[][] grid)
 	{
 		for (int i = 0; i < 9; i++)
@@ -129,6 +146,10 @@ public class SudokuView extends JPanel{
 		}
 	}
 	
+	/**
+	 * Sets the grid of sudoku and fixed the number so the user can't edit it
+	 * @param grid The grid to set
+	 */
 	public void fixGridNumbers(int[][] grid)
 	{
 		for (int i = 0; i < 9; i++)
@@ -147,6 +168,12 @@ public class SudokuView extends JPanel{
 		}
 	}
 	
+	/**
+	 * Gets the value of cell at position (row, col)
+	 * @param row The row of cell
+	 * @param col The column of cell
+	 * @return The value of the cell
+	 */
 	public int getGridAt(int row, int col)
 	{
 		String val = grids[row][col].getText();
@@ -160,11 +187,21 @@ public class SudokuView extends JPanel{
 		}
 	}
 	
+	/**
+	 * Sets the value of input to the cell at position (row, col)
+	 * @param row The row of the cell
+	 * @param col The column of the cell
+	 * @param val The value to set
+	 */
 	public void setGridAt(int row, int col, String val)
 	{
 		grids[row][col].setText(val);
 	}
 	
+	/**
+	 * Gets the selected number of radio button
+	 * @return The integer of radio button
+	 */
 	public int getSelectedNumber()
 	{
 		for (int i = 0; i < noBtn.length; i++)
