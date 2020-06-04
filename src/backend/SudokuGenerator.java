@@ -16,6 +16,10 @@ import model.Sudoku;
  *
  */
 public class SudokuGenerator {
+	/**
+	 * Generate and return a new Sudoku
+	 * @return New sudoku
+	 */
 	public static Sudoku generateSudoku()
 	{
 		int[][] generate = notEfficientGenerateAnswerGrid();

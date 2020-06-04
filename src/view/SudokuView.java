@@ -246,6 +246,20 @@ public class SudokuView extends JPanel{
 		}
 	}
 	
+	public void resetAll()
+	{
+		resetColor();
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				grids[i][j].setEnabled(true);
+				grids[i][j].setText("");
+				grids[i][j].setFont(new JButton().getFont());
+			}
+		}
+	}
+	
 	private JButton[][] grids;
 	private JRadioButton[] noBtn;
 	private ButtonGroup noBtnGroup;

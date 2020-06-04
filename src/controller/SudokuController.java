@@ -61,12 +61,11 @@ public class SudokuController implements ActionListener{
 			{
 				JOptionPane.showMessageDialog(view, "It is Correct!");
 				int option = JOptionPane.showConfirmDialog(view, "Would you like to Continue?", "Continue?", JOptionPane.YES_NO_OPTION);
-				System.out.println(option);
 				if (option == 0)
 				{
 					model = SudokuGenerator.generateSudoku();
+					view.resetAll();
 					view.fixGridNumbers(model.getOriginal());
-					view.resetColor();
 				}
 			}
 			else

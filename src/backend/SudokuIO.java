@@ -46,6 +46,10 @@ public class SudokuIO {
 		return input;
 	}
 	
+	/**
+	 * Gets the random grid which is in src/problems with the name "problem #"
+	 * @return The randomly chosen grid
+	 */
 	public static int[][] getRandomGrid()
 	{
 		Path dir = Paths.get("src/problems/");
