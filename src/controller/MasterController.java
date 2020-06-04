@@ -5,8 +5,9 @@ import java.util.Stack;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import backend.SudokuGenerator;
+import backend.SudokuIO;
 import model.Sudoku;
-import problems.SudokuIO;
 import view.MasterView;
 
 /**
@@ -21,7 +22,9 @@ public class MasterController {
 	public MasterController()
 	{
 		Sudoku example = new Sudoku();
-		example.setOriginal(SudokuIO.readFile("question 1"));
+		example = SudokuGenerator.generateSudoku();
+//		example.setOriginal(SudokuIO.getRandomGrid());
+//		example.setOriginal(SudokuIO.readFile("question 1"));
 		sudoku = new SudokuController(example, this);
 //		sudoku = new SudokuController(new Sudoku(), this);
 		mainView = new MasterView(sudoku.getView());

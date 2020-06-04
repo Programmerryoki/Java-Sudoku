@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import backend.Answer;
+import backend.SudokuGenerator;
+import backend.SudokuIO;
 import model.Sudoku;
 import view.SudokuView;
 
@@ -56,9 +58,19 @@ public class SudokuController implements ActionListener{
 		{
 			int[][] check = view.getGridNumbers();
 			if (Answer.solved(check))
+			{
 				JOptionPane.showMessageDialog(view, "It is Correct!");
+				int option = JOptionPane.showConfirmDialog(view, "Would you like to Continue?", "Continue?", JOptionPane.YES_NO_OPTION);
+				System.out.println(option);
+				if (option == 0)
+				{
+					model = SudokuGenerator.generateSudoku();
+					view.fixGridNumbers(model.getOriginal());
+					view.resetColor();
+				}
+			}
 			else
-				JOptionPane.showMessageDialog(null, "It is Wrong");
+				JOptionPane.showMessageDialog(view, "It is Wrong");
 		}
 		else if (action.substring(0, 5).equals("Radio"))
 		{

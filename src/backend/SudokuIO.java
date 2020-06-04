@@ -1,9 +1,14 @@
 
-package problems;
+package backend;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * The IO for the Sudoku
@@ -39,5 +44,23 @@ public class SudokuIO {
 		}
 		
 		return input;
+	}
+	
+	public static int[][] getRandomGrid()
+	{
+		Path dir = Paths.get("src/problems/");
+		int i = 0;
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir))
+		{
+			for (Path p : stream)
+				i++;
+		}
+		catch (IOException ex)
+		{
+			ex.printStackTrace();
+		}
+		
+		String fileName = "problem " + (int)(Math.random() * i + 1);
+		return readFile(fileName);
 	}
 }
